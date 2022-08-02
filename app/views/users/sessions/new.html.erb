@@ -1,0 +1,33 @@
+<div class="flex justify-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+    <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-6">
+        <div class="grid grid-cols-6 gap-6">
+          <div class="col-span-6">
+            <%= f.label :email, "Email", class: "block text-sm font-medium text-gray-700" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+
+          <div class="col-span-6">
+            <%= f.label :password, "Password", class: "block text-sm font-medium text-gray-700" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="col-span-6">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "Remember me", class: "text-sm font-medium text-gray-700" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="px-4 py-3 bg-gray-50 sm:px-6">
+        <%= f.submit "Log in", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+        <span class="ml-10">
+          Don't have an account yet?
+          <%= link_to "Sign Up", new_user_registration_path, class: "text-indigo-600" %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>
